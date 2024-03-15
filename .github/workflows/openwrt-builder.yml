@@ -102,8 +102,8 @@ jobs:
 
     - name: Load custom kernel configuration
       run: |
-        [ -e $KERNEL_CONFIG_FILE ] && mv $KERNEL_CONFIG_FILE openwrt/target/linux/x86/config-6.1
         rm openwrt/target/linux/x86/config-6.1
+        [ -e $KERNEL_CONFIG_FILE ] && mv $KERNEL_CONFIG_FILE openwrt/target/linux/x86/config-6.1
 
     - name: Compile the firmware
       id: compile
