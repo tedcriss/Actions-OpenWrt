@@ -63,6 +63,18 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
+        
+    - name: make openwrt-package folder
+      run: cd openwrt/package && mkdir openwrt-packages
+
+    - name: clone custom packages
+      run: |
+        git clone https://github.com/sbwml/luci-app-alist.git ./openwrt/package/openwrt-packages/alist
+        git clone https://github.com/Ausaci/luci-app-nat6-helper.git ./openwrt/package/openwrt-packages/luci-app-nat6-helper
+        git clone https://github.com/xiaorouji/openwrt-passwall.git ./openwrt/package/openwrt-packages/openwrt-passwall
+        git clone https://github.com/xiaorouji/openwrt-passwall-packages.git ./openwrt/package/openwrt-packages/openwrt-passwall-packages
+        git clone https://github.com/marcusfolkesson/opencv-openwrt-feed.git ./openwrt/package/openwrt-packages/opencv
+
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
